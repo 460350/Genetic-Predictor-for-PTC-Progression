@@ -951,9 +951,9 @@ C2_t2g<-msigdbr(species = "Homo sapiens",category="C2")%>%
   dplyr::select(gs_name,gene_symbol)
 t.emC2<-GSEA(geneListT,TERM2GENE=C2_t2g)
 enrichplot::dotplot(t.emC2,showCategory = 20,split=".sign")+facet_grid(~.sign)
-emC2_KEGG<-emC2
-emC2_KEGG@result<-emC2_KEGG@result[grep("KEGG_", emC2@result$Description),]
-enrichplot::dotplot(emC2_KEGG,showCategory = 5,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.1,0.6)
+t.emC2_KEGG<-t.emC2
+t.emC2_KEGG@result<-t.emC2_KEGG@result[grep("KEGG_", t.emC2@result$Description),]
+enrichplot::dotplot(t.emC2_KEGG,showCategory = 5,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.1,0.6)
 
 C5BP_t2g<-msigdbr(species = "Homo sapiens",category="C5",subcategory = "GO:BP")%>%
   dplyr::select(gs_name,gene_symbol)
