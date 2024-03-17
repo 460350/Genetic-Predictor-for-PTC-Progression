@@ -49,6 +49,12 @@ t.emC2_KEGG@result<-t.emC2_KEGG@result[grep("KEGG_", t.emC2@result$Description),
 t.emC2_REACTOME<-t.emC2
 t.emC2_REACTOME@result<-t.emC2_REACTOME@result[grep("REACTOME_", t.emC2@result$Description),]
 enrichplot::dotplot(t.emC2_REACTOME,showCategory = 9,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.15,0.75)
+# select the significant gene sets since there are so many heat shock protein related gene sets
+# was is associated with the approach of removing tumors?
+t.emC2_REACTOME_mod<-t.emC2_REACTOME
+rownames(t.emC2_REACTOME@result)
+t.emC2_REACTOME_mod@result<-t.emC2_REACTOME_mod[-c(3,4,6,11,14),]
+enrichplot::dotplot(t.emC2_REACTOME_mod,showCategory = 8,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.15,0.75)
 
 C5BP_t2g<-msigdbr(species = "Homo sapiens",category="C5",subcategory = "GO:BP")%>%
   dplyr::select(gs_name,gene_symbol)
@@ -88,7 +94,7 @@ plot(geneListT)
 H_t2g<-msigdbr(species = "Homo sapiens",category="H")%>%
   dplyr::select(gs_name,gene_symbol)
 t.emH<-GSEA(geneListT,TERM2GENE=H_t2g)
-enrichplot::dotplot(t.emH,showCategory = 5,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.15,0.63)
+enrichplot::dotplot(t.emH,showCategory = 10,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.10,0.63)
 
 C2_t2g<-msigdbr(species = "Homo sapiens",category="C2")%>%
   dplyr::select(gs_name,gene_symbol)
@@ -96,11 +102,16 @@ t.emC2<-GSEA(geneListT,TERM2GENE=C2_t2g)
 enrichplot::dotplot(t.emC2,showCategory = 10,split=".sign")+facet_grid(~.sign)
 t.emC2_KEGG<-t.emC2
 t.emC2_KEGG@result<-t.emC2_KEGG@result[grep("KEGG_", t.emC2@result$Description),]
-enrichplot::dotplot(t.emC2_KEGG,showCategory = 6,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.17,0.55)
+enrichplot::dotplot(t.emC2_KEGG,showCategory = 7,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.17,0.55)
 # try REACTOME pathways instead
 t.emC2_REACTOME<-t.emC2
 t.emC2_REACTOME@result<-t.emC2_REACTOME@result[grep("REACTOME_", t.emC2@result$Description),]
 enrichplot::dotplot(t.emC2_REACTOME,showCategory = 6,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.1,0.55)
+t.emC2_REACTOME_mod<-t.emC2_REACTOME
+rownames(t.emC2_REACTOME@result)
+t.emC2_REACTOME_mod@result<-t.emC2_REACTOME_mod[-c(1:12,14,15,16,18,19:22,23:25,27:30,31:33,35:39:43,45:49,51,52,55:59,
+                                                   62:65,68,69,71,73:77,80:83,85:87,89:90,92,93,97,99),]
+enrichplot::dotplot(t.emC2_REACTOME_mod,showCategory = 4,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.18,0.38)
 
 C5BP_t2g<-msigdbr(species = "Homo sapiens",category="C5",subcategory = "GO:BP")%>%
   dplyr::select(gs_name,gene_symbol)
@@ -159,7 +170,7 @@ plot(geneListT)
 H_t2g<-msigdbr(species = "Homo sapiens",category="H")%>%
   dplyr::select(gs_name,gene_symbol)
 t.emH<-GSEA(geneListT,TERM2GENE=H_t2g)
-enrichplot::dotplot(t.emH,showCategory = 5,split=".sign")+facet_grid(~.sign)
+enrichplot::dotplot(t.emH,showCategory = 8,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.3,0.74)
 
 C2_t2g<-msigdbr(species = "Homo sapiens",category="C2")%>%
   dplyr::select(gs_name,gene_symbol)
@@ -172,6 +183,12 @@ enrichplot::dotplot(t.emC2_KEGG,showCategory = 5,split=".sign")+facet_grid(~.sig
 t.emC2_REACTOME<-t.emC2
 t.emC2_REACTOME@result<-t.emC2_REACTOME@result[grep("REACTOME_", t.emC2@result$Description),]
 enrichplot::dotplot(t.emC2_REACTOME,showCategory = 5,split=".sign")+facet_grid(~.sign)
+t.emC2_REACTOME_mod<-t.emC2_REACTOME
+rownames(t.emC2_REACTOME@result)
+t.emC2_REACTOME_mod@result<-t.emC2_REACTOME_mod[-c(1:15,17,18,20:29,32:34,36,37:39,40,42:48,49,51:52,54:63,
+                                                   64:67,69:71,73:74,77:78,80:82,87:89,91:92,98,99,101,102,104:109,
+                                                   112:118),]
+enrichplot::dotplot(t.emC2_REACTOME_mod,showCategory = 9,split=".sign")+facet_grid(~.sign)+ggplot2::xlim(0.35,0.52)
 
 C5BP_t2g<-msigdbr(species = "Homo sapiens",category="C5",subcategory = "GO:BP")%>%
   dplyr::select(gs_name,gene_symbol)
