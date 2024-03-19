@@ -1,5 +1,5 @@
 # The GSEA conducted here is totally based on unfiltered DEGs and new rank algorithm. The new rank algorithm underlines p value in ranking.
-# The previous one ranks was mostly based on fold change since the gene list were generated with cutoff pvalue <0.05 and relatively high percentage in cell clusters.
+# The previous rankings were mostly based on fold change since the gene list were generated with cutoff pvalue <0.05 and relatively high percentage in cell clusters.
 # Two figures are about GSEA results from two Scissor analyses and MAPK13, STMN1, HMGB2 three-gene model GSEA
 
 library(tidyverse)
