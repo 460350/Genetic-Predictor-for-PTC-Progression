@@ -701,3 +701,8 @@ pROCtest<-ggplot(for_multi_ROCtest,
            label=paste("AUC max = ",round(AUC_maxtest,2),'\n', 'AUC max time =', 
                        AUC_max_timetest, ' months', sep = ''))
 pROCtest
+
+# Calculate the cut.off for ROC using Youden index (max TP-FP)
+cutoff_max<-for_multi_ROC$Cut_values[which.max(for_multi_ROC$True_positive-for_multi_ROC$False_positive)]
+cutoff_max
+# 8924379169
